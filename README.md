@@ -16,12 +16,22 @@ For most of this assignment I was able to reference examples that we completed d
 
 - I used code from excercise 10.3 to find the most recent date in the data set for my analysis.
 
-'''
-session.query(Measurement.date).order_by(Measurement.date.desc()).first()
-'''
+  ```
+
+    session.query(Measurement.date).order_by(Measurement.date.desc()).first()
+
+  ```
 
 - I used https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.hist.html to derive the correct syntax for the histogram.
 
+- I had to work with an AskBCS agent to figure out why app.py would not run. I was missing a critical piece of code at the end.
+
+  ```
+  
+    if __name__ == '__main__':
+        app.run()
+
+  ```
 
 ## Notes
 
