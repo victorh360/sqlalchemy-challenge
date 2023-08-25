@@ -18,12 +18,13 @@ from flask import Flask, jsonify
 
 # reflect an existing database into a new model
 
-engine = create_engine("sqlite///Resources/hawaii.sqlite")
+engine = create_engine("sqlite:///Resources/hawaii.sqlite")
+
 Base = automap_base()
 
 # reflect the tables
 
-Base.prepare(autoload_with=engine)
+Base.prepare(engine, reflect=True)
 
 # Save references to each table
 
@@ -88,7 +89,7 @@ def stations():
         station_dict["Station"] = station
         station_dict["Name"] = name
         station_dict["Latitude"] = lat
-        station_dict["Longitude"] = lonconda 
+        station_dict["Longitude"] = lon
         station_dict["Elevation"] = el
         stations.append(station_dict)
     
