@@ -24,7 +24,8 @@ Base = automap_base()
 
 # reflect the tables
 
-Base.prepare(engine, reflect=True)
+Base.prepare(autoload_with=engine)
+#Base.prepare(engine, reflect=True)
 
 # Save references to each table
 
@@ -71,6 +72,7 @@ def precipitation():
         prcp_dict["Precipitation"] = prcp
         precipitation.append(prcp_dict)  
     
+    session.close()
     return jsonify(precipitation)
     
 @app.route("/api/v1.0/stations")
@@ -93,6 +95,7 @@ def stations():
         station_dict["Elevation"] = el
         stations.append(station_dict)
     
+    session.close()
     return jsonify(stations)     
     
 @app.route("/api/v1.0/tobs")
@@ -112,6 +115,7 @@ def tobs():
         tobs_dict["Tobs"] = tobs
         tobs.append(tobs_dict)
     
+    session.close()
     return jsonify(tobs)   
        
 @app.route("/api/v1.0/<start>")
@@ -130,6 +134,7 @@ def temp_start(start):
         tobs_dict["Max"] = max
         tobs.append(tobs_dict)
     
+    session.close()
     return jsonify(tobs)  
         
 @app.route("/api/v1.0/<start>/<end>")
@@ -148,8 +153,8 @@ def temp_start_end(start, end):
         tobs_dict["Max"] = max
         tobs.append(tobs_dict)
     
+    session.close() 
     return jsonify(tobs)  
-    
-    
-    
-session.close()        
+        
+if __name__ == '__main__':
+    app.run()        
