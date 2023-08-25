@@ -88,7 +88,7 @@ def stations():
         station_dict["Station"] = station
         station_dict["Name"] = name
         station_dict["Latitude"] = lat
-        station_dict["Longitude"] = lon
+        station_dict["Longitude"] = lonconda 
         station_dict["Elevation"] = el
         stations.append(station_dict)
     
